@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en"><br>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <form method="GET">
+      <div class="form-group">
+        <div class="col-sm-3">
+          <b>Row:</b>
+          <input type="number" class="form-control" placeholder="row" id="row" name="row" value="<%=query.row%>">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-3">
+          <b>Column:</b>
+          <input type="number" class="form-control" placeholder="column" id="col" name="column" value="<%=query.column%>">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-3">
+          <b>Person:</b>
+          <input type="number" class="form-control" placeholder="person" id="per" name="person" value="<%=query.person%>">
+        </div>
+      </div>
+      <br />
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <a href="/"><button type="button" class="btn btn-danger">Reset</button></a>
+    </form>
+    <div id="structure">
+      <% if(typeof structure.totalUnhappy !== undefined  && structure.sittingIndex){%>
+      <br />
+      Total Unhappy Points: <label class="badge">
+        <%=structure.totalUnhappy || 0%></label>
+      <br />
+      <br />
+      <table class="table table-responsive table-bordered">
+        <% let index = 0; %>
+        <% for(let i = 0; i < query.row; i++){ %>
+        <tr>
+          <% for(let j=0; j < query.column; j++){ %>
+          <% if(structure.sittingIndex.indexOf(index) > -1){ %>
+          <td class="text-center">
+            <label class="label label-info"> User&nbsp;
+              <%=index%></label>
+          </td>
+          <% }else{ %>
+          <td>&nbsp;&nbsp;</td>
+          <% } %>
+          <% index++ %>
+          <% } %>
+        </tr>
+        <% } %>
+      </table>
+      <% } %>
+    </div>
+  </div>
+
+</html>
+</body>

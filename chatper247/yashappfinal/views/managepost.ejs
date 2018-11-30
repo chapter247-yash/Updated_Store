@@ -1,0 +1,76 @@
+<% include header %>
+<% include adminnav %>
+	
+	<div id="page" style="width:100%">
+		<div id="content" style="width:100%">
+			<div class="box">
+				
+<h1>Welcome to Admin Panel</h1><br><br>
+<h4>Manage Users Here..</h4>
+                <p>
+                <div style="overflow:scroll;width:800px;">
+				<table border=1px solid black style="border-collapse:collapse;font-weight:bold;color:blue;" class="tab">
+				<tr>
+				<th style="padding:3px;text-align:center;">Title</th>
+				<th>Category<br>Name</th>
+				<th>Description</th>
+				<th>Price</th>
+				<th>Image1</th>
+				<th>Image2</th>
+				<th>Image3</th>
+				<th>Address</th>
+				<th>Email</th>
+				<th>Mobile</th>
+				<th>City</th>
+				<th>Verify<br>Post</th>
+				<th>User<br>Status</th>
+                </tr>
+				<% for(var i = 0; i< result.length; i++){%>
+				    <tr>
+                        <%for(key in result[i]){%>
+                     
+                            <%if(key != 'pid' && key != 'vstatus' && key != 'ustatus'){%>
+                     
+                                <%if(key == 'myimg1'){%>
+                                <td><img src="../uploads/<%= result[i].myimg1%>" style="width:100px;height:100px;"></td>
+                                <% } else if(key == 'myimg2'){%>
+                                    <td><img src="../uploads/<%= result[i].myimg2%>" style="width:100px;height:100px;"></td>
+                                    <%} else if(key == 'myimg3'){%>
+                                        <td><img src="../uploads/<%= result[i].myimg3%>" style="width:100px;height:100px;"></td>
+                                        <% } else{%>
+                            <td style="text-align:center;color:black;font-weight:bold;"><%= result[i][key]%></td>
+                            <% } %>
+                     
+                        <%}%>
+                    <%}%>
+                   
+                   <td>
+                    
+                    <% if(result[i].vstatus == 0){%>
+                        <a href="/admin/changevstatus?email=<%= result[i].email %>&vstatus=1"><img src="../images/cross.png" width='30px' height="30px" style="margin-left:10px"></a>
+                    <% } else{%>
+                        <a href="/admin/changevstatus?email=<%= result[i].email %>&vstatus=0"><img src="../images/greentick.png" width='30px' height="30px" style="margin-left:10px"></a>
+                     <% } %>
+                   </td>
+                   <td>
+                    <% if(result[i].ustatus == 0){%>
+                        <a href="/admin/changeustatus?email=<%= result[i].email %>&ustatus=1"><img src="../images/cross.png" width='30px' height="30px" style="margin-left:10px"></a>
+                    <% } else{%>
+                        <a href="/admin/changeustatus?email=<%= result[i].email %>&ustatus=0"><img src="../images/greentick.png" width='30px' height="30px" style="margin-left:10px"></a>
+                     <% } %>
+                   </td>
+                   </tr>
+				<%}%>  
+				</table>
+				</div>
+				</p>
+				</div>
+			<br class="clearfix" />
+		</div>
+
+		<div>
+		<br class="clearfix" />
+	</div>
+</div>
+
+<% include footer %>

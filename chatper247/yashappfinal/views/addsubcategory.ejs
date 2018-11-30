@@ -1,0 +1,45 @@
+<% include header %>
+<% include adminnav %>
+<div id="page">
+		<div id="content">
+			<div class="box" style="height:605px;">
+				
+<h1>Welcome to Admin Panel</h1><br><br>
+<h4>Add Sub Category</h4>
+<br><br>
+<%= result%>
+<form action="/admin/addsubcategory" method="POST" enctype="multipart/form-data">
+				<table cellspacing="12" class="animated tada" style="margin-left:35px;">
+				  <tr>
+					  <td>Sub-Category Name</td>
+					  <td><input type="text" name="subcatnm"></td>
+				  </tr>
+				  <tr>
+					<td>Sub-Category Icon</td>
+					<td><input type="file" name="catimg"></td>
+				</tr>
+				<tr>
+					<td>
+					<select name="catnm">
+                        <option>-Select Category-</option>
+                        <% for(var i = 0; i< catlist.length; i++) {%>
+                        <option><%= catlist[i].catnm%></option>
+                        <% } %>
+					</select>
+					</td>
+				</tr>
+				<tr>
+					<td><input type="submit" value="Add"></td>
+				</tr>
+				</table>
+				</form>
+			</div>
+			<br class="clearfix" />
+		</div>
+
+		<div id="sidebar">
+		<br class="clearfix" />
+	</div>
+</div>
+
+<% include footer %>

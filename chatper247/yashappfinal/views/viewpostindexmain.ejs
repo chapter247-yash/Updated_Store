@@ -1,0 +1,61 @@
+<%include header%>
+<%include nav%>
+
+<script>
+   $(document).ready(function(){
+      $('#my').click(function(){
+       $('ul #myid').slideToggle()
+      })
+   })
+</script>
+
+<div id="page">
+    <div id="content" style="height:100%;">
+      <div class="box" style="width:1000px;padding:10px;height:650px;">
+    
+      <div class="row">
+      
+       <div class="column">
+           <img src="../uploads/<%= result[0].myimg1%>" style="width:100%;height:80px;" onclick="myFunction(this);" class="animated flipInY">
+      </div>
+      
+      <div class="column">
+        <img src="../uploads/<%= result[0].myimg2%>" style="width:100%;height:80px;" onclick="myFunction(this);" class="animated flipInY">
+       </div>
+      
+      <div class="column">
+      <img src="../uploads/<%= result[0].myimg3%>" style="width:100%;height:80px;" onclick="myFunction(this);" class="animated flipInY">
+       </div>
+</div>
+
+    <div class="container">
+      <img id="expandedImg" style="width:100%;height:400px;" src="../uploads/<%= result[0].myimg1%>">
+    <div id="imgtext"></div>
+    <div id="description">
+    <h4 style="color:orangered;"><%= result[0].title%></h4>
+     <h5><span style="color:blue;">Description :</span><%= result[0].description%></h5><br>
+     <h4>&#8377;&nbsp;&nbsp;&nbsp;<%= result[0].price%></h4>
+    </div>
+    </div>
+</div>
+<div class="details">
+    <h4 style="margin-bottom:7px;color:rgb(224, 18, 70);">Contact Person</h4>
+    <p><i class="fa fa-envelope"></i>&nbsp;&nbsp;&nbsp;<%= result[0].email %></p>
+   <p><i class="fa fa-phone"></i>&nbsp;&nbsp;&nbsp;<%= result[0].mob %></p>
+   <p><i class="fa fa-globe"></i>&nbsp;&nbsp;&nbsp;<%= result[0].city %></p>
+   <p><i class="fa fa-map-marker"></i>&nbsp;&nbsp;&nbsp;<%= result[0].address %></p>
+</div>
+<br class="clearfix" />
+</div>
+   <br class="clearfix" />
+  </div>
+  <script>
+function myFunction(imgs) {
+    var expandImg = document.getElementById("expandedImg");
+    var imgText = document.getElementById("imgtext");
+    expandImg.src = imgs.src;
+    imgText.innerHTML = imgs.alt;
+    expandImg.parentElement.style.display = "block";
+}
+</script>
+  <%include footer%>

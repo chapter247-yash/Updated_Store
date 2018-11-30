@@ -1,0 +1,31 @@
+<div >
+<body id="page-top">
+
+  <app-nav></app-nav>
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <app-sidebar></app-sidebar>
+
+    <div id="content-wrapper">
+        
+        <div class="container-fluid">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+            <b>Dashboard: </b><a routerLink="/main">Admin Panel</a> <a><span>{{ufinal1 | titlecase}}</span></a>{{ufinal2 | titlecase}}
+            </li>
+          </ol>
+          </div>
+
+      <router-outlet></router-outlet>
+
+      <app-footer></app-footer>
+
+    </div>
+    <!-- /.content-wrapper -->
+
+  </div>
+  <!-- /#wrapper -->
+
+</body>
+</div>

@@ -1,0 +1,154 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style type="text/css">
+        body {
+            margin: 30px;
+        }
+        span {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+    <form method="GET" id="myForm">
+        <div class="form-group">
+            <div class="row-sm-4">
+                <b>Row:</b>
+                <input type="number" class="form-control" placeholder="No of Rows" id="rows" name="rows">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row-sm-4">
+                <b>Column:</b>
+                <input type="number" class="form-control" placeholder="No of Columns" id="columns" name="columns">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row-sm-4">
+                <b>Person:</b>
+                <input type="number" class="form-control" placeholder="No of Persons" id="persons" name="persons">
+            </div>
+        </div>
+        <br />
+        <input type="button" onclick="createTable()" id="submitLink" value="Submit">
+        <button><a href="javascript:timedRefresh(0.001)">Refresh Button</a></button>
+        <br/><br/><br/>
+        <div class="form-group">
+            <div class="row-sm-4">
+                <span>Unhappy Points:</span>
+                <input type="text" onclick="toggleTable();" class="form-control" id="someInput" 
+                placeholder="Please insert Number of rows & column to get the Unhappy points " name="someInput">
+            </div>
+            </div>
+    </form>
+    <br><br>
+
+    <table id="myTable" class="table table-responsive table-bordered bgcolor=#FF0000" > </table>
+
+    </div>
+</body>
+</html>
+
+<script>
+    function createTable() {
+        row = document.getElementById("rows").value;
+        column = document.getElementById("columns").value;
+        users = document.getElementById("persons").value;
+        space = row * column;
+        var Index = [];
+        let structure = {};
+        var Unhappy = 0;
+        var maxUnhappy = 0;
+        structure = getUnhappyPoints(row, column, space, users, Unhappy, Index, maxUnhappy);
+    }
+
+    function timedRefresh(timeoutPeriod) {
+        setTimeout("location.reload(true);", timeoutPeriod);
+    }
+
+    function getUnhappyPoints(row, column, space, users, Unhappy, Index, maxUnhappy)
+{
+        console.log(row, column, space, users, Unhappy, Index);
+
+        for (var i = 0; i < space; i++)
+    {
+            var isF = i % column == 0;
+            console.log("isFirst =" + isF);
+            var isL = i % column == column - 1;
+            console.log("isLast =" + isL);  
+            var isRB = Index.indexOf(parseInt(i) + 1) > -1;
+            console.log(" Value of isRightBlocked =" + Index.indexOf(parseInt(i) + 1));
+            console.log("isRightBlocked = " + isRB)
+            var isLB = Index.indexOf(i - 1) > -1;
+            console.log(" Value of isLeftBlocked =" + Index.indexOf(i - 1));
+            console.log("isLeftBlocked =" + isLB);
+            var isTB = Index.indexOf(i - column) > -1;
+            console.log(" Value of isTopBlocked =" + Index.indexOf(i - column));
+            console.log("isTopBlocked =" + isTB);
+            var isBB = Index.indexOf(parseInt(i) + parseInt(column)) > -1;
+            console.log(" Value of isBottomBlocked =" + Index.indexOf(parseInt(i) + parseInt(column)));
+            console.log("isBottomBlocked =" + isBB);
+            if (isF) {
+                isLB = false;
+            }
+            if (isL) {
+                isRB = false;
+            }
+            var l = isLB ? 1 : 0;
+            console.log("left =" + l);
+            var r = isRB ? 1 : 0;
+            console.log("right =" + r);
+            var t = isTB ? 1 : 0;
+            console.log("top =" + t);
+            var b = isBB ? 1 : 0;
+            console.log("bottom =" + b);
+            var total = l+ r+ t + b;
+            console.log("total =" + total);
+            if (total == maxUnhappy && Index.indexOf(i) == -1) {
+                Index.push(i);
+                console.log("total Unhappy=" + Unhappy)
+                Unhappy = Unhappy + total;
+                console.log("total Unhappy=" + Unhappy)
+            }
+        if (Index.length >= users) {
+            console.log("Unhappy=" + Unhappy);
+            console.log("Index=" + Index)
+           // document.write('<p>Unhappy = ' + Unhappy + '</p>');
+           var index = 0;
+           for(var r=0;r<row;r++)
+            {   
+                var x=document.getElementById('myTable').insertRow(r);
+                for(var c=0;c<column;c++)  
+                {
+                    if (Index.indexOf(index) > -1){
+                    var y=  x.insertCell(c);
+                    y.innerHTML="<br> User <br>";
+                    }
+                    else { 
+                        var y=  x.insertCell(c);
+                        y.innerHTML="<br> - <br>"; 
+                    }
+                    index++;
+                }
+            }
+            document.getElementById("someInput").value = Unhappy;
+            return ;
+        }
+    }
+        if (Index.length < users) {
+            return getUnhappyPoints(row, column, space, users, Unhappy,Index, ++maxUnhappy)
+        }
+        //document.write('<p>Unhappy = ' + Unhappy + '</p>');
+        document.getElementById("someInput").value = Unhappy;
+        return ;
+            } 
+
+
+</script>

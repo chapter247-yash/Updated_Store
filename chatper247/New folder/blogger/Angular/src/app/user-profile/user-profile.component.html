@@ -1,0 +1,11 @@
+<div class="container" *ngIf="userDetails">
+  <mat-toolbar>
+      <span class="fill-remaining-space"></span>
+      <span>Welcome {{userDetails.fullName | uppercase }}</span>
+      <span class="fill-remaining-space"></span>
+  </mat-toolbar>
+  <app-blog-add></app-blog-add>
+</div>
+
+
+  

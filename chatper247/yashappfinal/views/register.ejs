@@ -1,0 +1,63 @@
+<%include header%>
+<%include nav%>
+<%include slider%>
+<div id="page">
+		<div id="content" style="width:600px;">
+			<div class="box" style="width:500px;">
+				<h2>Welcome to <span style="color:blue;">Post</span><span style="color:orangered">Krde.com</span></h2>
+				<h3>Register</h3>
+				<p style="color:green;font-size:18px"><%= title%></p>
+				<form action="/register" method="POST">
+				<table cellspacing="12">
+				  <tr>
+					  <td>Name</td>
+					  <td><input type="text" name="nm"></td>
+				  </tr>
+				  <tr>
+					<td>Email/Username</td>
+					<td><input type="text" name="email"></td>
+				</tr>
+				<tr>
+					<td>Password</td>
+					<td><input type="password" name="pass"></td>
+				</tr>
+				<tr>
+				    <td>Address</td>
+					<td><textarea type="text" name="address" cols="16"></textarea></td>
+				</tr>
+				<tr>
+				    <td>Mobile</td>
+					<td><input type="text" name="mob"></td>
+				</tr>
+				<tr>
+				    <td>City</td>
+					<td><input type="text" name="city"></td>
+				</tr>
+				<tr>
+					<td>Gender</td>
+					<td><input type="radio" name="gender" value="male">Male</td>
+					<td><input type="radio" name="gender" value="female">Female</td>
+				</tr>
+				<tr>
+					<td><input type="submit" value="Register"></td>
+				</tr>
+				</table>
+				</form>
+			</div>
+			<br class="clearfix" />
+		</div>
+		<div id="sidebar">
+			<div class="box">
+				<h3>Social Links</h3>
+				<ul class="list">
+					<li class="first"><a><i class="fa fa-facebook"></i></a></li>
+					<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+					<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+					<li><a href="#"><i class="fa fa-instagram"></i></a></li>
+					<li class="last"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+				</ul>
+			</div>
+		</div>
+		<br class="clearfix" />
+	</div>
+	<%include footer%>

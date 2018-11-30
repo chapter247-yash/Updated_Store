@@ -1,0 +1,150 @@
+<%include header%>
+<%include nav%>
+
+<script>
+   $(document).ready(function(){
+      $('#my').click(function(){
+       $('ul #myid').slideToggle()
+      })
+   })
+</script>
+<style>
+#mydiv{
+  width:850px;
+  height:auto;
+  margin-top:20px;
+  margin-left:65px;
+  padding:15px;
+  box-sizing:border-box;
+  border-radius:16px;
+  
+}
+#div1{
+    width: 640px;
+    height:150px;
+    background:#fff; 
+      position: relative;
+      box-shadow: 1px 1px 18px 2px rgba(160,30,85,0.4);
+      margin-left:30px;
+      margin-bottom:20px;
+  }
+  #div2{
+    width: 220px;
+    height:130px;
+    background:#fff; 
+    position: absolute;
+    box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.3);
+    top: 9px;
+    left: -25px;
+    margin-bottom:10px;
+  }
+  #div2:hover{
+  border-right:2px solid red;
+  }
+  #div3{
+    position: absolute;
+    top: -2px;
+    left: 260px;
+    width:350px;
+    height:200px;
+  }
+  
+ #myid a{
+  text-decoration:none;
+  font-size:18px;
+  color:#ff0000;
+  }
+  #bt{
+    position: absolute;
+    top: 100px;
+    left: 570px;
+    width:85px;
+    padding:8px;
+    background: #1e90ff; 
+    outline: none;
+    border: none;
+    border-radius: 2px;
+
+  }
+  #bt:hover{
+    background: #6a5acd; 
+    box-shadow: 3px 4px 8px 0px rgba(0,0,0,0.4);
+  }
+  #bt a{
+  color: #fff;
+  text-decoration:none;
+  }
+  #div3 p{
+  margin-bottom:2px;
+  }
+</style>
+<h3 style="font-weight:bold;color:orangered;letter-spacing:2px;margin:5px 0 0 20px">Filters</h3>
+<div id="mydiv" class="animated flipInX">
+<form method="POST" action="/viewpostindex">
+ <table style="border:none;">
+ <tr>
+   <th>Filter By Price :</th>
+   <td><input type="text" name="sprice" style="width:100px" placeholder="Starting Price">-
+   <input type="text" name="eprice" style="width:100px" placeholder="Ending Price">&nbsp;&nbsp;&nbsp;&nbsp;
+   <input type="submit"  style="width:150px" value="Sort By Price"></td>
+   </tr>
+   </table>
+</form>
+<form method="POST" action="/viewpostindex">
+<br><br>
+ <table style="border:none;">
+   <tr>
+   <th>Filter By City :</th>
+   <td><input type="text" name="city" style="width:100px" placeholder="City">&nbsp;&nbsp;&nbsp;&nbsp;
+   <input type="submit"  style="width:150px" value="Sort By City"></td>
+   <% if(result.length != 0){%>
+           <td><input type="hidden" name="subcatnm" value="<%= result[0].cat_nm%>"></td>
+        <% }  %>
+  </tr>
+</table>
+</form>
+</div><br>
+
+
+<div id="page">
+    <div id="content">
+      <div class="box"style="width:680px;">
+        <h2 style="color:blue">Subcategories&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-double-right" aria-hidden="true" style="color:black;"></i>
+        <% if(result.length != 0){%>
+            <span style="color:orangered;"><%= result[0].cat_nm%></span></h2>
+        <% } else{ %>
+          <h4>No Post related to category Found...<span><img src="../images/sorry.jpg" width="60px" height="60px"></span><h4>
+       <% }%>
+        
+                   <%for(i = 0; i < result.length; i++){%>
+                   <div id="div1">
+                   <div id="div2">
+                     <img src="../uploads/<%= result[i].myimg1%>" width="210px" height="120" style="margin: 5px 0 0 5px">
+                      <div id="div3">
+                     <p><span style="font-size:14px;font-weight:bold;">Title:</span><%= result[i].title%></p>
+                     <p><span style="font-size:14px;font-weight:bold;">Description:</span><%= result[i].description%></p>
+                     <p><span style="font-size:14px;font-weight:bold;">&#8377;:</span><%= result[i].price%></p>
+                     </div>
+                    <button id="bt"><a href="/viewpostindexmain?id=<%=result[i].pid %>">View</a></button>
+                   </div>
+                   </div>
+                   <% } %>
+        
+         
+      </div>
+
+      <br class="clearfix" />
+    </div>
+    <div id="sidebar">
+      <div class="box">
+        <h3 style="color:#dc143c;cursor:pointer;" id="my">Sub-Categories&nbsp;&nbsp;<i class="fa fa-caret-down" aria-hidden="true"></i></h3>
+        <ul class="list">
+        <% for(var i = 0 ; i < subcatlist.length; i++) {%>
+        <li style="display:none;" id="myid"><a href="/viewpostindex?subcatnm=<%= subcatlist[i].subcatnm%>"><%= subcatlist[i].subcatnm%></a></li>
+          <% } %>
+        </ul>
+      </div>
+    </div>
+    <br class="clearfix" />
+  </div>
+  <%include footer%>

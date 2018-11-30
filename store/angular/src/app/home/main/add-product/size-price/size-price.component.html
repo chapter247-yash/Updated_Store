@@ -1,0 +1,107 @@
+<br>
+
+<h4>Price & Size</h4>
+<hr>
+
+<form #sizepriceForm="ngForm" (ngSubmit)="onUpdate(sizepriceForm)" >
+
+  <input type="hidden" name="_id" [(ngModel)]="selectedProduct._id">
+
+  <div class="form-group">
+    <div class="col-sm-9">
+      <div class="row">
+        <div class="col-xs-6">
+          <div class="input-group"> <span class="input-group-addon">Product Reg. Price<b> ($)</b></span>
+            <input id="prependedtext" #price="ngModel" name="price" [(ngModel)]="selectedProduct.price" class="form-control" placeholder="x"
+              type="text">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <br><br>
+    <h6> Product Sizes </h6>
+    <hr>
+    <div class="col-sm-9">
+      <div class="row">
+        <div class="row-xs-4">
+          <div class="input-group"> <span class="input-group-addon">S :<b> ($)</b></span>
+            <input id="prependedtext" #ssize="ngModel" name="ssize" [(ngModel)]="selectedProduct.ssize" class="form-control" placeholder="x"
+              type="text">
+          </div>
+          <br>
+          <div class="input-group"> <span class="input-group-addon">M :<b> ($)</b></span>
+            <input id="prependedtext" #msize="ngModel" name="msize" [(ngModel)]="selectedProduct.msize" class="form-control" placeholder="x"
+              type="text">
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="col-sm-9">
+      <div class="row">
+        <div class="row-xs-4">
+          <div class="input-group"> <span class="input-group-addon">L :<b> ($)</b></span>
+            <input id="prependedtext" #lsize="ngModel" name="lsize" [(ngModel)]="selectedProduct.lsize" class="form-control" placeholder="x"
+              type="text">
+          </div>
+          <br>
+          <div class="input-group"> <span class="input-group-addon">XL :<b> ($)</b></span>
+            <input id="prependedtext" #xlsize="ngModel" name="xlsize" [(ngModel)]="selectedProduct.xlsize" class="form-control" placeholder="x" type="text">
+            <span class="input-group-btn">
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br><br>
+  <h6> Product Information Details </h6>
+  <hr>
+  <br>
+
+  <div class="form-group">
+    <label for="password" class="col-sm-3 control-label">Tab Label 1 - <b>Size Chart</b></label>
+    <label for="password" class="col-sm-3 control-label"></label>
+    <div class="col-sm-9">
+        <!-- <ckeditor id="editor1" [editor]="Editor" (ready)="onReady1($event)" [config]="{ toolbar: [ 'heading', '|', 'bold', 'italic','link','bulletedList', 'numberedList','ImageUpload','undo','redo' ] }" #information1="ngModel"  name="information1" [(ngModel)]="selectedInformation.information1"></ckeditor> -->
+            <!-- <div class="container">
+                    <email-editor  class="form-control" name="information1" (mouseleave)="onChangeInformation1($event)"  [projectId]="1"></email-editor>
+                  </div> -->
+      <!-- <app-ngx-editor name="information1" height="300px" [(ngModel)]="selectedProduct.information1" [placeholder]="'Enter text here...'"
+        [spellcheck]="true"></app-ngx-editor> -->
+            <div id="main">
+                <div id="content">
+          <textarea id="information1" name="information1">  </textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br>
+
+
+  <div class="form-group">
+    <label for="password" class="col-sm-3 control-label">Tab Label 2 - <b>How to Measure</b></label>
+    <label for="password" class="col-sm-3 control-label"></label>
+    <div class="col-sm-9">
+        <textarea name="information2" id="information2"></textarea>
+        <!-- <ckeditor id="editor2" [editor]="Editor"  (ready)="onReady2($event)" [config]="{ toolbar: [ 'heading', '|', 'bold', 'italic','link','bulletedList', 'numberedList','ImageUpload','undo','redo' ] }"s #information2="ngModel"  name="information2" [(ngModel)]="selectedInformation.information2"></ckeditor> -->
+         <!-- <div class="container">
+            <email-editor input="text" [projectId]="1" name="information1" ></email-editor>
+          </div> 
+       <app-ngx-editor name="information2" height="300px" [(ngModel)]="selectedProduct.information2" [placeholder]="'Enter text here...'"
+        [spellcheck]="true"></app-ngx-editor>  -->
+      </div>
+  </div>  
+  
+
+  <div class="form-group">
+    <div class="col-sm-9">
+      <button type="submit" class="btn btn-primary btn-block">Update Product</button>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,55 @@
+<% include header %>
+<% include adminnav %>
+	
+	<div id="page" style="width:100%">
+		<div id="content" style="width:100%">
+			<div class="box">
+				
+<h1>Welcome to Admin Panel</h1><br><br>
+<h4>Manage Users Here..</h4>
+                <p>
+                
+				<table border=1px solid black style="border-collapse:collapse;font-weight:bold;color:blue;" class="animated zoomIn tab">
+				<tr><th  style="padding:3px;text-align:center;">RegId</th>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Password</th>
+				<th>Address</th>
+				<th>Mobile</th>
+				<th>City</th>
+				<th>Gender</th>
+				<th>Action</th>
+                </tr>
+				<% for(var i = 0; i< result.length; i++){%>
+				<tr>
+                   <%for(key in result[i]){%>
+                       <%if(key != 'role' && key != 'status'){%>
+                     <td style="text-align:center;color:black;font-weight:bold;"><%= result[i][key]%></td>
+                     <%}%>
+                   <%}%>
+                   <td>
+                        <% if(result[i].status==1){ %>
+                           <a href='/admin/block_unblockuser?email=<%= result[i].email %>&status=0'><img src="../images/block.png" width="28px" height="28px"></a>
+                       <% } %>
+                        
+
+                        <% if(result[i].status==0){ %>
+                           <a href='/admin/block_unblockuser?email=<%= result[i].email %>&status=1'><img src="../images/unblock.png" width="28px" height="28px"></a>
+                       <% } %>  
+                       
+                       <a href='/admin/deleteuser?email=<%= result[i].email %>'><img src="../images/delete.png" width="28px" height="28px"></a></td>
+                   </tr>
+				<%}%>  
+				</table>
+			
+				</p>
+				</div>
+			<br class="clearfix" />
+		</div>
+
+		<div>
+		<br class="clearfix" />
+	</div>
+</div>
+
+<% include footer %>

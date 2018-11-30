@@ -1,0 +1,43 @@
+<% include header %>
+<% include adminnav %>
+	
+	<div id="page" style="width:100%">
+		<div id="content" style="width:100%">
+			<div class="box">
+				
+<h1>Welcome to Admin Panel</h1><br><br>
+<h4>Manage Category Here..</h4>
+                <p>
+				<table border=1px solid black style="border-collapse:collapse;font-weight:bold;color:blue;width:880px;" class="tab animated fadeIn">
+				<tr><th  style="padding:7px;text-align:center;">Category Id</th>
+				<th>Category Name</th>
+				<th>Category Image</th>
+				<th>Action</th>
+				</tr>
+				<% for(var i = 0; i < result.length; i++){%>
+				    <tr>
+				        <% for(key in result[i]) {%>
+				         <%if(key == 'catimg'){%>
+                                    <td><img src='../uploads/<%= result[i][key]%>' width='50px' height='50px' style="margin-left:140px"></td>
+                                 <% } else{%>
+				            <td style="color:orangered;text-align:center;"><%= result[i][key]%></td>
+				        <% } %>
+				        <% } %>
+				        <td>
+                            <a href="#" style="margin:25px;"><img src="../images/update.jpg" width="50px" height="50px" title="Update" ></a>
+                            <a href="/admin/deletecategory?catnm=<%= result[i].catnm%>"><img src="../images/delete.png" width="50px" height="50px" title="Delete"></a>
+                        </td>
+				    </tr>
+				<% } %>
+				</table>
+				</p>
+				</div>
+			<br class="clearfix" />
+		</div>
+
+		<div>
+		<br class="clearfix" />
+	</div>
+</div>
+
+<% include footer %>

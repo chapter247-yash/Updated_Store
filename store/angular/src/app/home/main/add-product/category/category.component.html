@@ -1,0 +1,68 @@
+<br>
+<b>
+    <h5> Please Select Category: </h5>
+</b>
+<br>
+<form #categoryForm="ngForm">
+
+<input type="hidden" name="_id" [(ngModel)]="selectedProduct._id">
+
+<input id="men" type="checkbox" name="men" (click)="onSelectMen($event)" [(ngModel)]="selectedProduct.men" [class.disabled]="statusM" [disabled]="statusM"/>
+<label for="men"><h5> I) MENS</h5></label>
+<div>
+<h6> T-Shrits</h6>
+<input id="cheese" type="checkbox" name="m_ts_shortSleeve"  [class.disabled]="statusM" [disabled]="statusM" [(ngModel)]="selectedProduct.m_ts_shortSleeve"/>
+<label for="cheese">Short Sleeves</label> &nbsp; &nbsp;
+<input id="olives" name="m_ts_longSleeve" [class.disabled]="statusM" [disabled]="statusM" [(ngModel)]="selectedProduct.m_ts_longSleeve" type="checkbox" />
+<label for="olives">Long Sleeves</label>&nbsp; &nbsp;
+<input id="pepperoni" name="m_ts_performance" [class.disabled]="statusM" [disabled]="statusM" [(ngModel)]="selectedProduct.m_ts_performance" type="checkbox"  />
+<label for="pepperoni">Performance</label>&nbsp; &nbsp;
+
+<h6> Shrits</h6>
+<input id="cheese" name="m_sh_shortSleeve" [class.disabled]="statusM" [disabled]="statusM" [(ngModel)]="selectedProduct.m_sh_shortSleeve" type="checkbox"  />
+<label for="cheese">Short Sleeves</label> &nbsp; &nbsp;
+<input id="olives" name="m_sh_longSleeve" [class.disabled]="statusM" [disabled]="statusM" [(ngModel)]="selectedProduct.m_sh_longSleeve" type="checkbox" />
+<label for="olives">Long Sleeves</label>&nbsp; &nbsp;
+<input id="pepperoni" name="m_sh_performance" [class.disabled]="statusM" [disabled]="statusM" [(ngModel)]="selectedProduct.m_sh_performance" type="checkbox" />
+<label for="pepperoni">Performance</label>&nbsp; &nbsp;
+
+<h6> Polos</h6>
+<input id="cheese" name="m_po_shortSleeve" [class.disabled]="statusM" [disabled]="statusM" [(ngModel)]="selectedProduct.m_po_shortSleeve" type="checkbox"  />
+<label for="cheese">Short Sleeves</label> &nbsp; &nbsp;
+<input id="olives" name="m_po_longSleeve" [class.disabled]="statusM" [disabled]="statusM" [(ngModel)]="selectedProduct.m_po_longSleeve" type="checkbox"  />
+<label for="olives">Long Sleeves</label>&nbsp; &nbsp;
+</div>
+
+<br><br>
+<input id="womens" type="checkbox" name="women" (click)="onSelectWomen($event)" [(ngModel)]="selectedProduct.women" [class.disabled]="statusW" [disabled]="statusW"/>
+<label for="womens"><h5> II) WOMENS</h5></label>
+<div >
+<h6> T-Shrits</h6>
+<input id="cheese" name="w_ts_shortSleeve" [class.disabled]="statusW" [checked]="isAvailable" [disabled]="statusW" [(ngModel)]="selectedProduct.w_ts_shortSleeve" type="checkbox" />
+<label for="cheese">Short Sleeves</label> &nbsp; &nbsp;
+<input id="olives" name="w_ts_longSleeve" [class.disabled]="statusW" [checked]="isAvailable" [disabled]="statusW" [(ngModel)]="selectedProduct.w_ts_longSleeve" type="checkbox"/>
+<label for="olives">Long Sleeves</label>&nbsp; &nbsp;
+<input id="pepperoni" name="w_ts_performance" [class.disabled]="statusW" [checked]="isAvailable" [disabled]="statusW" [(ngModel)]="selectedProduct.w_ts_performance" type="checkbox"  />
+<label for="pepperoni">Performance</label>&nbsp; &nbsp;
+
+<h6> Shrits</h6>
+<input id="cheese" name="w_sh_longSleeve" [class.disabled]="statusW" [disabled]="statusW"  [(ngModel)]="selectedProduct.w_sh_longSleeve" type="checkbox"  />
+<label for="cheese">Short Sleeves</label> &nbsp; &nbsp;
+<input id="olives" name="w_sh_shortSleeve" [class.disabled]="statusW" [disabled]="statusW"  [(ngModel)]="selectedProduct.w_sh_shortSleeve" type="checkbox" />
+<label for="olives">Long Sleeves</label>&nbsp; &nbsp;
+
+<h6> Polos</h6>
+<input id="cheese" name="w_po_shortSleeve" [class.disabled]="statusW" [disabled]="statusW"  [(ngModel)]="selectedProduct.w_po_shortSleeve" type="checkbox" />
+<label for="cheese">Short Sleeves</label> &nbsp; &nbsp;
+<input id="olives" name="w_po_longSleeve" [class.disabled]="statusW" [disabled]="statusW"  [(ngModel)]="selectedProduct.w_po_longSleeve" type="checkbox" />
+<label for="olives">Long Sleeves</label>&nbsp; &nbsp;
+</div>
+
+<br><br>
+
+<div class="form-group">
+    <div class="col-sm-9">
+        <button type="submit" (click)="onUpdate(categoryForm)" class="btn btn-primary btn-block">Update Category</button>
+    </div>
+</div>
+</form>

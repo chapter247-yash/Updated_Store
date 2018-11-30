@@ -1,0 +1,16 @@
+MVC Pattern in Angular-6
+
+The View
+A presentation of data in a particular format, triggered by the controller's decision to present the data. 
+
+The Model
+The model is responsible for managing application data. It responds to the request from view and to the instructions from controller to update itself.
+
+The Controller
+The controller responds to user input and performs interactions on the data model objects. The controller receives input, validates it, and then performs business operations that modify the state of the data model.
+
+When we create a new component, a bunch of files are generated for us. The important ones are the ones ending on component.html and component.ts for understanding MVC. These are the view and controller respectively. The HTML, is what is presented to the user (along with some CSS for layout). It is easy to see how this represents the view. Next to it, we have the accompanying component.ts file. This is the controller. Essentially, it can choose which data to push to our view (.html) with the various forms of binding.
+
+Lastly, we have the model. In angular6, the model will mostly be our services, which we can access through our controller.
+
+Though our model can extend beyond that. Our 'backend' can have more classes, that our services use to process or store information for example. This can belong to our model as well. We can have a class file for Person. A PersonService can then manage an array of Person. We could say that Person is still a model class.

@@ -1,0 +1,31 @@
+<form [formGroup]="service.form" class="normal-form" >
+  <mat-grid-list cols="2" rowHeight="300px">
+    <mat-grid-tile>
+      <div class="controles-container">
+        <mat-form-field>
+            <input formControlName="title" matInput placeholder="Enter Title">
+            <mat-error>This field is mandatory.</mat-error>
+          </mat-form-field>
+        <mat-form-field>
+          <input formControlName="shortDescription" matInput placeholder="ShortDescription">
+          <mat-error>This field is mandatory.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input formControlName="category" matInput placeholder="Enter Category">
+          <mat-error>This field is mandatory.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input formControlName="fullDescription" matInput placeholder="FullDescription">
+          <mat-error>This field is mandatory.</mat-error>
+        </mat-form-field>
+        <div class="button-row">
+          <button mat-raised-button color="primary" type="submit" [disabled]="service.form.invalid">Submit</button>
+          <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
+        </div>
+        <div class="button-row">
+          <input type="button" (click)="onLogout()" value="Logout" />
+          </div>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</form>

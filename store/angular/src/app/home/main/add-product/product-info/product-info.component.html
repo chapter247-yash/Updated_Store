@@ -1,0 +1,278 @@
+<form
+  (ngSubmit)="f.form.valid && onSubmit(f)"
+  #f="ngForm"
+  class="form-horizontal"
+  enctype="multipart/form-data"
+  role="form"
+>
+  <br />
+  <div class="form-group"><h5>Add Product Informations</h5></div>
+  <input type="hidden" name="_id" [(ngModel)]="selectedProduct._id" />
+
+  <div class="form-group">
+    <label for="firstName" class="col-sm-3 control-label"
+      >Product Name<span class="star">*</span></label
+    >
+    <div class="col-sm-9">
+      <input
+        type="text"
+        name="name"
+        #name="ngModel"
+        [(ngModel)]="selectedProduct.name"
+        maxlength="100"
+        [ngClass]="{ 'is-invalid': f.submitted && name.invalid }"
+        placeholder="Product Title"
+        class="form-control"
+        required
+      />
+      <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
+        <div *ngIf="name.errors.required">Name is required</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="brandName" class="col-sm-3 control-label"
+      >Brand Name<span class="star">*</span></label
+    >
+    <div class="col-sm-9">
+      <input
+        type="text"
+        name="brandName"
+        #brandName="ngModel"
+        [(ngModel)]="selectedProduct.brandName"
+        maxlength="100"
+        [ngClass]="{ 'is-invalid': f.submitted && brandName.invalid }"
+        placeholder="Brand Name"
+        class="form-control"
+        required
+      />
+      <div *ngIf="f.submitted && brandName.invalid" class="invalid-feedback">
+        <div *ngIf="brandName.errors.required">Brand Name is required</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="itemNo" class="col-sm-3 control-label"
+      >Item Number<span class="star">*</span></label
+    >
+    <div class="col-sm-9">
+      <input
+        type="text"
+        name="itemNo"
+        #itemNo="ngModel"
+        [(ngModel)]="selectedProduct.itemNo"
+        maxlength="100"
+        [ngClass]="{ 'is-invalid': f.submitted && itemNo.invalid }"
+        placeholder="Item Number"
+        class="form-control"
+        required
+      />
+      <div *ngIf="f.submitted && itemNo.invalid" class="invalid-feedback">
+        <div *ngIf="itemNo.errors.required">Item Number is required</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="itemNo" class="col-sm-3 control-label"
+      >Supplier Name<span class="star">*</span></label
+    >
+    <div class="col-sm-9">
+      <input
+        type="text"
+        name="supplierName"
+        #supplierName="ngModel"
+        [(ngModel)]="selectedProduct.supplierName"
+        maxlength="100"
+        [ngClass]="{ 'is-invalid': f.submitted && supplierName.invalid }"
+        placeholder="Supplier Name"
+        class="form-control"
+        required
+      />
+      <div *ngIf="f.submitted && supplierName.invalid" class="invalid-feedback">
+        <div *ngIf="supplierName.errors.required">
+          Supplier Name is required
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="weight" class="col-sm-3 control-label"
+      >Weight<span class="star">*</span></label
+    >
+    <div class="col-sm-12">
+      <div class="row add-info">
+        <div class="col-sm-6">
+          <input
+            type="number"
+            name="weight"
+            #weight="ngModel"
+            [(ngModel)]="selectedProduct.weight"
+            max="10000"
+            [ngClass]="{ 'is-invalid': f.submitted && weight.invalid }"
+            placeholder="Weight"
+            class="form-control"
+            required
+          />
+          <div *ngIf="f.submitted && weight.invalid" class="invalid-feedback">
+            <div *ngIf="weight.errors.required">Weight is required</div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <select
+            name="weightq"
+            #weightq="ngModel"
+            [(ngModel)]="selectedProduct.weightq"
+            (change)="selectQuantity($event)"
+            id="lunch"
+            class="selectpicker form-control"
+          >
+            <option selected="selected" name="gms" value="gms">gms</option>
+            <option selected="selected" name="oz" value="oz">oz</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="itemNo" class="col-sm-3 control-label"
+      >Quantity<span class="star">*</span></label
+    >
+    <div class="col-sm-9">
+      <input
+        type="number"
+        name="quantity"
+        #quantity="ngModel"
+        [(ngModel)]="selectedProduct.quantity"
+        max="10000"
+        [ngClass]="{ 'is-invalid': f.submitted && quantity.invalid }"
+        placeholder="Quantity"
+        class="form-control"
+        required
+      />
+      <div *ngIf="f.submitted && quantityinvalid" class="invalid-feedback">
+        <div *ngIf="quantity.errors.required">
+          Supplier Name is required
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-12">
+      <div class="row add-info">
+        <div class="col-sm-6">
+          <label for="itemNo" class="col-sm-3 control-label"
+            >New<span class="star">*</span></label>
+        </div>
+        <div class="col-sm-6">
+               <div class="row add-info">
+        <div class="col-sm-2">
+          <label for="itemNo" class="col-sm-3 control-label"
+            >Sale<span class="star">*</span></label>
+        </div>
+        <div class="col-sm-4">
+            <label for="itemNo" class="col-sm-3 control-label"
+              >Percentage(%)<span class="star">*</span></label>
+          </div>
+        </div>
+          </div>
+      </div>
+    </div>
+
+    <div class="col-sm-12">
+      <div class="row add-info">
+        <div class="col-sm-6">
+          <label class="switch">
+            <input
+            #new="ngModel"
+              type="checkbox"
+              [(ngModel)]="selectedProduct.new"
+              name="new"
+            />
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div class="col-sm-6">
+            <div class="row add-info">
+            <div class="col-sm-2">
+          <label class="switch">
+            <input
+              #sale="ngModel"
+              type="checkbox"
+              [(ngModel)]="selectedProduct.sale"
+              name="sale"
+            />
+            <span class="slider round"></span>
+          </label>
+          </div>
+          <div class="col-sm-4">
+          <input type="number" #percentage="ngModel" name="percentage" [(ngModel)]="selectedProduct.percentage" class="form-control">
+        </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--
+    <div class="form-group">
+        <label for="weight" class="col-sm-3 control-label">Description<span class="star">*</span></label>
+        <div class="col-sm-9">
+            <app-ngx-editor [placeholder]="'Add Product Description Here...'" #description="ngModel" height="300px"  name="description" [(ngModel)]="selectedProduct.description" [spellcheck]="true"  [ngClass]="{ 'is-invalid': f.submitted && description.invalid }"required></app-ngx-editor>
+            </div>
+    </div>
+  -->
+
+  <div class="form-group">
+    <label for="description" class="col-sm-3 control-label"
+      >Description<span class="star">*</span></label
+    >
+    <div class="col-sm-9">
+      <div id="main">
+        <div id="content">
+          <textarea id="editor1" name="description"> </textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--
+      <div class="form-group">
+        <label for="description" class="col-sm-3 control-label"><b>Description</b><span class="star">*</span></label>
+    <div class="col-sm-9">
+            <div id="content">
+              <div class="form-group">
+                <ckeditor id="editor" [config]="{ toolbar: [ 'heading', '|', 'bold', 'italic','link', 'bulletedList', 'numberedList','undo','redo' ] }" [editor]="Editor" #description="ngModel"  name="description" [(ngModel)]="selectedProduct.description"></ckeditor>
+            </div>
+    </div>
+    </div>
+    </div>
+  -->
+  <!--
+     <div class="form-group">
+      <label for="weight"   class="col-sm-3 control-label"><b>Description</b><span class="star">*</span></label>
+    <div class="col-sm-9">
+          <div class="container">
+                  <email-editor input="text" [projectId]="1" name="description" ></email-editor>
+                </div>
+    </div>
+    </div>
+  -->
+  <!--
+    <button type="submit"  class="btn btn-primary btn-block">Submit Description</button>
+  -->
+
+  <br />
+  <div class="form-group">
+    <div class="col-sm-9">
+      <button type="submit" class="btn btn-primary btn-block">
+        Add Product
+      </button>
+      <br />
+    </div>
+  </div>
+</form>

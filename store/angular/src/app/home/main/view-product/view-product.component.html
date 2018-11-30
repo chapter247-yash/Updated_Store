@@ -1,0 +1,145 @@
+<div class="col-sm-12">
+ <b>  Search:</b>
+  <hr>
+  <form #productForm="ngForm" (ngSubmit)="getProductByItemNo(productForm)">
+    <div class="row">
+
+        <div class="col-md-2">
+            <div class="navbar-form navbar-right" role="search">
+              <span> Product Number </span>
+              <div class="input-group">
+                <input type="text" class="form-control" name="itemNo" [(ngModel)]="selectedProduct._id" placeholder="Product Number"
+                  id="itemNo">
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-2">
+              <div class="navbar-form navbar-right" role="search">
+                <span> Product Name </span>
+                <div class="input-group">
+                  <input type="text" class="form-control"  name="itemNo" [(ngModel)]="selectedProduct.productName" placeholder="Product Name"
+                    id="productName">
+                </div>
+              </div>
+            </div>
+
+      <div class="col-md-2">
+        <div class="navbar-form navbar-right" role="search">
+          <span> Brand Name </span>
+          <div class="input-group">
+            <input type="text" class="form-control"  name="itemNo" [(ngModel)]="selectedProduct.brandName" placeholder="Brand Name"
+              id="brandName">
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-2">
+        <div class="navbar-form navbar-right" role="search">
+          <span> Item Number </span>
+          <div class="input-group">
+            <input type="text" class="form-control" name="itemNo" [(ngModel)]="selectedProduct.itemNo" placeholder="Item Number"
+              id="itemNo">
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-2">
+        <div class="navbar-form navbar-right" role="search">
+          <span> Sort By: </span>
+          <div class="input-group">
+              <select class="form-control" (change)="onSort($event)">
+                <option name="new"> New </option>
+                <option name="old"> Old </option>
+                <option name="a"> A-Z </option>
+                <option name="z"> Z-A</option>
+              </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-0">
+          <span> &nbsp;</span>
+          <div class="input-group-btn">
+            <button type="submit" class="btn btn-outline-dark"  ><i class="fa fa-search-plus"></i></button>
+          </div>
+      </div>
+
+      <div class="col-md-1">
+        <span> &nbsp;</span>
+          <div class="input-group-btn2">
+            <button type="reset" class="btn btn-outline-dark" (click)="refresh()"><i class="fa">&#xf021;</i></button>
+          </div>
+      </div>
+    </div>
+  </form>
+
+<br>
+
+  <div class="col-sm-12">
+    <div class="row">
+
+  <div class="col-md-2">
+     <label> <input type="checkbox"  id=""  [(ngModel)]="selectedAll" (change)="selectALL($event)" /> Select All</label>
+        <div  class="input-group">
+            <select class="form-control"  (change)="performMany($event)" >
+              <option name=""> Perform Operation</option>
+              <option name="delete">Delete</option>
+              <option name="active"> Active </option>
+              <option name="deactive"> Deactive </option>
+            </select>
+        </div>
+        <!-- <div *ngIf="ALL" class="input-group">
+            <select class="form-control"  (change)="performMany1($event)" >
+              <option> Perform Operation</option>
+              <option name="delete1">Delete1</option>
+              <option name="active1"> Active1</option>
+              <option name="deactive1"> Deactive1</option>
+            </select>
+        </div> -->
+    </div>
+    </div>
+  </div>
+
+  <br><br>
+  <b> Product List:</b>
+  <hr>
+  <div *ngIf="!data">
+  <div class="row">
+    <div class="col-sm-4" *ngFor="let product of products| paginate: config">
+      <div class="card bg-light ">
+      
+          <div id="checkboxlist">
+        <div class="card-header bg-info text-dark1">
+          <input type="checkbox"  (click)="getID(product._id)" [(ngModel)]="product.selected"/> &nbsp;
+          <b>Product Name:</b> {{product.name}}
+        </div>
+        </div>
+
+          <div class="row">
+            <div class="card-body col-sm-6">
+              <p class="card-text text-dark"> <b>Product Number:</b> #{{product.itemNo}}</p>
+              <p class="card-text text-dark"> <b>Brand Name:</b> {{product.brandName}}</p>
+              <p class="card-text text-dark"> <b>Item No:</b> {{product.itemNo}}</p>
+              <button class="card-link" class="btn btn-outline-danger btn-space btn-sm"  (click)="clickMethod(product._id,product.name)"><i class="fa fa-trash-o" style="font-size:18px;color:red"></i></button>
+              <button class="card-link" class="btn btn-outline-warning btn-space btn-sm" (click)="editProduct(product)"><i class="fa fa-edit" style="font-size:18px;color:red"></i></button>
+              <!-- <button class="card-link"  class="btn btn-outline-success btn-space" (click)="status(product)">{{product.status}}</button> -->
+              <button class="card-link" *ngIf="product.status === 'Active'" class="btn btn-outline-success btn-space" (click)="status(product)">{{product.status}}</button>
+              <button class="card-link" *ngIf="product.status === 'Deactive'" class="btn btn-outline-danger btn-space" (click)="status(product)">{{product.status}}</button>
+           </div>
+           <div *ngIf="!frontThumb" class="card-body col-sm-6 col-ms-100px" >
+              <img class="imgSize" src="http://localhost:3000/{{product.frontThumb[0]}}"   onError="this.src='../assets/image/Noimagefound.jpg'" alt="Card image cap">
+          </div>
+        </div>
+      </div>  
+      <br>
+  </div>
+</div>
+</div>
+
+<div *ngIf="data">
+    <!-- <b><p> NO DATA FOUND </p></b>
+    <b><p> Please Enter Correct Parameters </p></b> -->
+    <img class="imgSize1" src="../../../../assets/image/Norecordfound.png">
+</div>
+<pagination-controls (pageChange)="pageChange($event)" class="my-pagination"></pagination-controls>

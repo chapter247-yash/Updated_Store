@@ -1,0 +1,85 @@
+<%include header%>
+<%include nav%>
+<%include slider%>
+<script>
+   $(document).ready(function(){
+      $('#my').click(function(){
+       $('ul #myid').slideToggle()
+      })
+   })
+</script>
+<style>
+   #mycat{
+   width:650px;
+   height:350px;
+   padding:10px;
+   box-sizing:border-box;
+   }
+   #mycatpart{
+     width:150px;
+     height:150px;
+     float:left;
+     margin:0 0 35px 40px;
+     border-radius:50%;
+     box-shadow: 1px 6px 3px 2px rgba(0,0,0,0.2);
+     border-right:3px solid orangered;
+   }
+   #mycatpart:hover{
+   box-shadow: 1px 6px 3px 1px rgba(0,0,0,0.12);
+   transform:scale(1.024);
+   border-right:none;
+   border-left:3px solid #a52a2a;
+   transition:.4s ease;
+   }
+  #b{
+  color:black;
+  }
+  #mycatpart:hover #b{
+  color:blue;
+  font-size:20px;
+  transition:.5s ease;
+  }
+ #myid a{
+  text-decoration:none;
+  font-size:18px;
+  color:#ff0000;
+  }
+</style>
+<div id="page">
+		<div id="content">
+			<div class="box">
+				<h2 style="color:blue">Subcategories&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-double-right" aria-hidden="true" style="color:black;"></i>
+        <% if(result.length != 0){%>
+            <span style="color:orangered;"><%= result[0].catnm%></span></h2>
+        <% } else{ %>
+          <h4>No Sub Category Found...<span><img src="../images/sorry.jpg" width="60px" height="60px"></span><h4>
+       <% }%>
+        <div id="mycat">
+                   <%for(i = 0; i < result.length; i++){%>
+                   <a href="/viewpostindex?subcatnm=<%=result[i].subcatnm %>">
+                   <div id="mycatpart" id='x'>
+                     <img src="../uploads/<%= result[i].subcatimg%>" width="100px" height="100" style="margin: 25px 0 0 23px">
+                     <br><br>
+                     <center><b id='b'><%= result[i].subcatnm%></b></center>
+                   </div>
+                   </a>
+                   <% } %>
+				</div>
+         
+			</div>
+
+			<br class="clearfix" />
+		</div>
+		<div id="sidebar">
+			<div class="box">
+				<h3 style="color:#dc143c;cursor:pointer;" id="my">Categories&nbsp;&nbsp;<i class="fa fa-caret-down" aria-hidden="true"></i></h3>
+				<ul class="list">
+        <% for(var i = 0 ; i < catlist.length; i++) {%>
+        <li style="display:none;" id="myid"><a href="/viewsubcategoryindex?catnm=<%= catlist[i].catnm%>"><%= catlist[i].catnm%></a></li>
+          <% } %>
+				</ul>
+			</div>
+		</div>
+		<br class="clearfix" />
+	</div>
+	<%include footer%>

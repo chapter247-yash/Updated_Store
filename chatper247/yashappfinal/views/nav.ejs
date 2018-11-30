@@ -1,0 +1,33 @@
+<style>
+#btn{
+	width:100px;
+	height:30px;
+	background:linear-gradient(to left, rgb(226, 111, 17), rgb(233, 26, 53));
+	border:0px;
+	border-radius:5px;
+	box-shadow: 1px 5px 2px -1px rgba(0,0,0,0.4);
+	margin-left:75px;
+}
+#btn:hover{
+	background:linear-gradient(to right, rgb(226, 111, 17), rgb(233, 26, 53));
+	box-shadow: 1px 6px 2px -1px rgba(0,0,0,0.4);
+}
+</style>
+<div id="menu">
+		<ul>
+			<li><a href="/home">Home</a></li>
+			<li><a href="#">About</a></li>
+			<li>
+				<span class="opener">Services<b></b></span>
+				<ul>
+					<li><a href="#">Offers</a></li>
+					<li><a href="#">Recent Activities</a></li>
+				</ul>
+			</li>
+			<li><a href="#">Contact</a></li>
+			<li><a href="/register">Register</a></li>
+			<li><a href="/login">Login</a></li>
+			<li class="last"><button id="btn"><a href="/addpost">Add Post</a></button></li>
+		</ul>
+		<br class="clearfix" />
+	</div>

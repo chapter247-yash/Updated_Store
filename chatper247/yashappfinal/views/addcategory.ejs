@@ -1,0 +1,35 @@
+<% include header %>
+<% include adminnav %>
+	
+	<div id="page">
+		<div id="content">
+			<div class="box" style="height:380px;">
+				
+<h1>Welcome to Admin Panel</h1>
+<p><%= result%><font color='green'></font></i></p>
+
+<form action="/admin/addcategory" method="POST" enctype="multipart/form-data">
+				<table cellspacing="12" class="animated flipInY" style="margin-left:35px;">
+				  <tr>
+					  <td>Category Name</td>
+					  <td><input type="text" name="catnm"></td>
+				  </tr>
+				  <tr>
+					<td>Category Icon</td>
+					<td><input type="file" name="catimg"></td>
+				</tr>
+				<tr>
+					<td><input type="submit" value="Add"></td>
+				</tr>
+				</table>
+				</form>
+			</div>
+			<br class="clearfix" />
+		</div>
+
+		<div id="sidebar">
+		<br class="clearfix" />
+	</div>
+</div>
+
+<% include footer %>

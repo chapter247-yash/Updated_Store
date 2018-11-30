@@ -1,0 +1,72 @@
+<%include header%>
+<%include nav%>
+<%include slider%>
+
+<style>
+   #mycat{
+   width:650px;
+   height:350px;
+   padding:10px;
+   box-sizing:border-box;
+   }
+   #mycatpart{
+     width:150px;
+     height:150px;
+     float:left;
+     margin:0 0 35px 40px;
+     border-radius:100%;
+     box-shadow: 1px 6px 3px 2px rgba(0,0,0,0.2);
+     border-right:3px solid orangered;
+   }
+   #mycatpart:hover{
+   box-shadow: 1px 6px 3px 1px rgba(0,0,0,0.12);
+   transform:scale(1);
+   border-right:none;
+   border-left:5px dashed #a52a2a;
+   transition:.4s ease;
+   }
+  #b{
+  color:black;
+  }
+  #mycatpart:hover #b{
+  color:blue;
+  font-size:20px;
+  transition:.5s ease;
+  }
+</style>
+<div id="page">
+		<div id="content">
+			<div class="box">
+				<h2>Welcome to <span style="color:red;">PostKarle</span><span style="color:blue">.com</span></h2>
+        <div id="mycat">
+                   <%for(i = 0; i < result.length; i++){%>
+                   <% if(i == 9) {%>
+                   <% {break;}%>
+                   <% } %>
+                   <a href="/viewsubcategoryindex?catnm=<%= result[i].catnm%>">
+                   <div id="mycatpart">
+                     <img src="../uploads/<%= result[i].catimg%>" width="100px" height="100" style="margin: 25px 0 0 23px">
+                     <br><br>
+                     <center><b id='b'><%= result[i].catnm%></b></center>
+                   </div></a>
+                   <% } %>
+				</div>
+			</div>
+			<br class="clearfix" />
+		</div>
+		<div id="sidebar">
+			<div class="box">
+				<h3>Social Links</h3>
+				<ul class="list">
+					<li class="first"><a><i class="fa fa-facebook"></i></a></li>
+					<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+					<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+					<li><a href="#"><i class="fa fa-instagram"></i></a></li>
+					<li class="last"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+				</ul>
+			</div>
+		</div>
+		<br class="clearfix" />
+	</div>
+
+	<%include footer%>

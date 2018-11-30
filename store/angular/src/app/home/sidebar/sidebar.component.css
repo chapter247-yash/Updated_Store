@@ -1,0 +1,12 @@
+.sidebar {
+    min-height: 1100px
+}
+ .active {
+    background-color:black;
+    color: white;
+}
+
+.sidebar .nav-item .nav-link:active, .sidebar .nav-item .nav-link:focus, .sidebar .nav-item .nav-link:hover{
+    color:white;
+    background-color:gray; 
+}

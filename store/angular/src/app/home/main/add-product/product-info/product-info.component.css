@@ -1,0 +1,165 @@
+body {
+    background: #444;
+    margin-top: 3rem;
+  }
+
+  .form { margin-top: 15px; }
+  
+  
+  .checkbox { margin-top: inherit; } 
+  
+  ul.nav-tabs { cursor: pointer; }
+
+  .cellContainer {
+    width: 25%;
+    float: left;
+  }
+  .my-group .form-control{
+    width:50%;
+}
+.star{
+  color: red
+}
+
+.container {
+  font-size:200px;
+  color:#07c;
+}
+  
+:host {
+  height: 100%;
+  display: block;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 100%;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+.add-info .col-sm-6{
+  padding-right: 5px;
+}
+.add-info .col-sm-3{
+  padding-left: 0;
+}
+:host {
+  height: 100%;
+  display: block;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 500px;
+  width: 1000px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.cke_top cke_reset_all{
+  padding: 120px 0 !important;
+}
+
+.ck-editor-toolbar .ck-button{
+  border-width: 0 !important; ;
+  font-size: 10em !important; ;
+}
+
+.ck.ck-icon{
+  font-size: 2em !important; ;
+}
+
+.ck.ck-icon.ck-button__icon{
+font-size: 2em !important;
+}
+
+.ck.ck-block-toolbar-button {
+  transform: translateX( -10px );
+}
+
+.ck-editor {
+  color: var(--color) !important; ;
+}
+
+.ck-rounded-corners.ck.ck-button.ck-rounded-corners a.ck.ck-button.ck.ck-button.ck-rounded-corners a.ck.ck-button.ck-rounded-corners{
+    height: 100px !important;
+}
+
+.ck.ck-icon {
+  width: 40px !important;
+  height: 70px !important;
+  font-size: 1.6333350694em !important;
+  will-change: transform !important;
+}
+
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
